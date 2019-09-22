@@ -6,15 +6,22 @@ import { NavigationActions, scaleSizeW, scaleSizeH, setSpText } from '../../util
 import {ReadingStatus, SwitchTab, DownFrame, DataTableList, Button, EditableFrame} from '../../components';
 import { Theme } from '../../comm'
 import InputScrollView from 'react-native-input-scroll-view'
+import {Icon} from '@ant-design/react-native'
 
 @connect(({financeDemands})=>({financeDemands}))
 class FinaceDetail extends Component {
-  static navigationOptions = {
+  static navigationOptions = ({navigation})=>({
     title: '企业项目融资需求详情',
     headerTitleStyle:{
       color: Theme.darkTextColor
-    }
-  }
+    },
+    headerLeft: (
+      <Icon name="arrow-left" style={{marginLeft: 5}} size="md" color={Theme.darkTextColor} onPress={()=>{
+        //navigation.dispatch(NavigationActions.back())
+        navigation.goBack()
+      }} />
+    )
+  })
   componentDidMount(): void {
     console.info('this.props',this.props)
   }
@@ -25,8 +32,9 @@ class FinaceDetail extends Component {
 
   render() {
     const {navigation} = this.props
+    console.log("navigation", navigation);
     const item=navigation.getParam('sourceInfo','if-null')
-    console.log("item Detail", item);
+    console.log("tem Detail", item);
     return (
       <InputScrollView
         style={styles.container}
@@ -63,9 +71,6 @@ class FinaceDetail extends Component {
               {name: '企业名称:', width: 1},
               {name: item.companyName, width: 2},
             ]}
-            onPress={(item) => {
-              this.props.navigation.navigate('FinaceDetail', {sourceInfo: item})
-            }}
           />
           <EditableFrame
             defaultValue={item.adviseFromLeader}

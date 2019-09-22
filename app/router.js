@@ -22,6 +22,7 @@ import Project from './containers/Project'
 import Finace from './containers/Finace'
 import FinaceDetail from './containers/finace/FinaceDetail'
 import ProjectDetail from './containers/project/ProjectDetail'
+import ParkStatusDetail from './containers/parkStatus/ParkStatusDetail'
 
 import User from './containers/User'
 
@@ -115,6 +116,7 @@ const MainNavigator = createStackNavigator(
 
     FinaceDetail: { screen: FinaceDetail },
     ProjectDetail: { screen: ProjectDetail },
+    ParkStatusDetail : {screen: ParkStatusDetail}
 
   },
   {

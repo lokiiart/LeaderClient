@@ -11,7 +11,6 @@ import {ReadingStatus, SwitchTab, DownFrame, DataTableList} from '../components'
 import { Theme } from '../comm'
 import {withNavigation} from 'react-navigation'
 
-
 @connect(({financeDemands})=>({financeDemands}))
 class Finace extends Component {
   constructor(props) {
@@ -22,7 +21,7 @@ class Finace extends Component {
   }
 
   componentDidMount(){
-    this.willFocusSubscription = this.props.navigation.addListener(
+    this.didFocusSubscription = this.props.navigation.addListener(
       'didFocus',
       payload=>{
         this.props.dispatch({type:'financeDemands/init'})
@@ -31,7 +30,7 @@ class Finace extends Component {
   }
 
   componentWillUnmount(){
-    this.willFocusSubscription.remove()
+    this.didFocusSubscription.remove()
   }
 
 

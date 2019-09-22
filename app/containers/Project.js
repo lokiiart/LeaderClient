@@ -10,7 +10,7 @@ import {ReadingStatus, SwitchTab, DownFrame, DataTableList} from '../components'
 import { Theme } from '../comm'
 
 
-@connect()
+@connect(({projects})=>({projects}))
 class Project extends Component {
   constructor(props) {
     super(props);
@@ -18,8 +18,22 @@ class Project extends Component {
       selected: 1,
     }
   }
+  componentDidMount(){
+    //this.didFocusSubscription = this.props.navigation.addListener(
+      //'didFocus',
+      //payload=>{
+        this.props.dispatch({type:'projects/init'})
+      //}
+    //)
+  }
+
+  componentWillUnmount(){
+    //this.didFocusSubscription.remove()
+  }
 
   render() {
+    const {fetching,list} = this.props.projects
+    console.log("project list", list);
     return (
       <ScrollView
         style={styles.container}
@@ -37,41 +51,16 @@ class Project extends Component {
             </View>
           </View>
           <DataTableList
-            daraArr={[
-              {"isChecked": true, "type": "tap",  "no" : 1, "hy" : "食点豆豆客", "hc":"工业企业", "zyyw":"粮食、食用油",  "zzc":"1000", "rzje":"3000万", "rzfs": "银行贷款", "zrbm": "区商务和经和局", "xq": "查看"},
-              {"isChecked": true, "type": "tap",  "no" : 2, "hy" : "食点豆豆客", "hc":"工业企业", "zyyw":"粮食、食用油",  "zzc":"1000", "rzje":"3000万", "rzfs": "银行贷款", "zrbm": "区商务和经和局", "xq": "查看"},
-              {"isChecked": true, "type": "tap",  "no" : 3, "hy" : "食点豆豆客", "hc":"工业企业", "zyyw":"粮食、食用油",  "zzc":"1000", "rzje":"3000万", "rzfs": "银行贷款", "zrbm": "区商务和经和局", "xq": "查看"},
-              {"isChecked": true, "type": "tap",  "no" : 4, "hy" : "食点豆豆客", "hc":"工业企业", "zyyw":"粮食、食用油",  "zzc":"1000", "rzje":"3000万", "rzfs": "银行贷款", "zrbm": "区商务和经和局", "xq": "查看"},
-              {"isChecked": true, "type": "tap",  "no" : 5, "hy" : "食点豆豆客", "hc":"工业企业", "zyyw":"粮食、食用油",  "zzc":"1000", "rzje":"3000万", "rzfs": "银行贷款", "zrbm": "区商务和经和局", "xq": "查看"},
-              {"isChecked": true, "type": "tap",  "no" : 6, "hy" : "食点豆豆客", "hc":"工业企业", "zyyw":"粮食、食用油",  "zzc":"1000", "rzje":"3000万", "rzfs": "银行贷款", "zrbm": "区商务和经和局", "xq": "查看"},
-              {"isChecked": true, "type": "tap",  "no" : 7, "hy" : "食点豆豆客", "hc":"工业企业", "zyyw":"粮食、食用油",  "zzc":"1000", "rzje":"3000万", "rzfs": "银行贷款", "zrbm": "区商务和经和局", "xq": "查看"},
-              {"isChecked": true, "type": "tap",  "no" : 8, "hy" : "食点豆豆客", "hc":"工业企业", "zyyw":"粮食、食用油",  "zzc":"1000", "rzje":"3000万", "rzfs": "银行贷款", "zrbm": "区商务和经和局", "xq": "查看"},
-              {"isChecked": true, "type": "tap",  "no" : 6, "hy" : "食点豆豆客", "hc":"工业企业", "zyyw":"粮食、食用油",  "zzc":"1000", "rzje":"3000万", "rzfs": "银行贷款", "zrbm": "区商务和经和局", "xq": "查看"},
-              {"isChecked": true, "type": "tap",  "no" : 7, "hy" : "食点豆豆客", "hc":"工业企业", "zyyw":"粮食、食用油",  "zzc":"1000", "rzje":"3000万", "rzfs": "银行贷款", "zrbm": "区商务和经和局", "xq": "查看"},
-              {"isChecked": true, "type": "tap",  "no" : 8, "hy" : "食点豆豆客", "hc":"工业企业", "zyyw":"粮食、食用油",  "zzc":"1000", "rzje":"3000万", "rzfs": "银行贷款", "zrbm": "区商务和经和局", "xq": "查看"},
-              {"isChecked": true, "type": "tap",  "no" : 6, "hy" : "食点豆豆客", "hc":"工业企业", "zyyw":"粮食、食用油",  "zzc":"1000", "rzje":"3000万", "rzfs": "银行贷款", "zrbm": "区商务和经和局", "xq": "查看"},
-              {"isChecked": true, "type": "tap",  "no" : 7, "hy" : "食点豆豆客", "hc":"工业企业", "zyyw":"粮食、食用油",  "zzc":"1000", "rzje":"3000万", "rzfs": "银行贷款", "zrbm": "区商务和经和局", "xq": "查看"},
-              {"isChecked": true, "type": "tap",  "no" : 8, "hy" : "食点豆豆客", "hc":"工业企业", "zyyw":"粮食、食用油",  "zzc":"1000", "rzje":"3000万", "rzfs": "银行贷款", "zrbm": "区商务和经和局", "xq": "查看"},
-              {"isChecked": true, "type": "tap",  "no" : 6, "hy" : "食点豆豆客", "hc":"工业企业", "zyyw":"粮食、食用油",  "zzc":"1000", "rzje":"3000万", "rzfs": "银行贷款", "zrbm": "区商务和经和局", "xq": "查看"},
-              {"isChecked": true, "type": "tap",  "no" : 7, "hy" : "食点豆豆客", "hc":"工业企业", "zyyw":"粮食、食用油",  "zzc":"1000", "rzje":"3000万", "rzfs": "银行贷款", "zrbm": "区商务和经和局", "xq": "查看"},
-              {"isChecked": true, "type": "tap",  "no" : 8, "hy" : "食点豆豆客", "hc":"工业企业", "zyyw":"粮食、食用油",  "zzc":"1000", "rzje":"3000万", "rzfs": "银行贷款", "zrbm": "区商务和经和局", "xq": "查看"},
-              {"isChecked": true, "type": "tap",  "no" : 6, "hy" : "食点豆豆客", "hc":"工业企业", "zyyw":"粮食、食用油",  "zzc":"1000", "rzje":"3000万", "rzfs": "银行贷款", "zrbm": "区商务和经和局", "xq": "查看"},
-              {"isChecked": true, "type": "tap",  "no" : 7, "hy" : "食点豆豆客", "hc":"工业企业", "zyyw":"粮食、食用油",  "zzc":"1000", "rzje":"3000万", "rzfs": "银行贷款", "zrbm": "区商务和经和局", "xq": "查看"},
-              {"isChecked": true, "type": "tap",  "no" : 8, "hy" : "食点豆豆客", "hc":"工业企业", "zyyw":"粮食、食用油",  "zzc":"1000", "rzje":"3000万", "rzfs": "银行贷款", "zrbm": "区商务和经和局", "xq": "查看"},
-              {"isChecked": true, "type": "tap",  "no" : 6, "hy" : "食点豆豆客", "hc":"工业企业", "zyyw":"粮食、食用油",  "zzc":"1000", "rzje":"3000万", "rzfs": "银行贷款", "zrbm": "区商务和经和局", "xq": "查看"},
-              {"isChecked": true, "type": "tap",  "no" : 7, "hy" : "食点豆豆客", "hc":"工业企业", "zyyw":"粮食、食用油",  "zzc":"1000", "rzje":"3000万", "rzfs": "银行贷款", "zrbm": "区商务和经和局", "xq": "查看"},
-              {"isChecked": true, "type": "tap",  "no" : 8, "hy" : "食点豆豆客", "hc":"工业企业", "zyyw":"粮食、食用油",  "zzc":"1000", "rzje":"3000万", "rzfs": "银行贷款", "zrbm": "区商务和经和局", "xq": "查看"},
-            ]}
+            dataType={"project"}
+            daraArr={list}
             headerArr={[
               {name: '序号', width: 1},
-              {name: '企业名称', width: 3},
-              {name: '行业类型', width: 2},
-              {name: '主营业务', width: 2},
-              {name: '总资产（万元）', width: 2},
-              {name: '融资金额（万元）', width: 2},
-              {name: '融资方式', width: 2},
-              {name: '联挂责任部门', width: 3},
-              {name: '详情', width: 2},
+              {name: '项目名称', width: 2},
+              {name: '业主单位', width: 2},
+              {name: '建设地址', width: 2},
+              {name: '总投资（万元）', width: 2},
+              {name: '主要建设内容', width: 3},
+              {name: '存在问题和困难', width: 3},
             ]}
             onPress={(item) => {
               this.props.navigation.navigate('ProjectDetail', {sourceInfo: item})

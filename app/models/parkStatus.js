@@ -4,7 +4,7 @@ import * as readService from '../services/read'
 export default {
   namespace: 'parkStatus',
   state: {
-    data:{},
+    data: null,
     fetching: false,
   },
   reducers: {
@@ -13,7 +13,7 @@ export default {
     },
   },
   effects: {
-      *init(action, {call, put, select}){
+      *init({payload},{call, put, select}){
         yield put(createAction('updateState')({ fetching: true }))
         const globalState=yield select((state)=>state)
         const res = yield call(readService.fetchParkStatus)
@@ -23,7 +23,18 @@ export default {
           console.log("fail",res)
         }
         yield put(createAction('updateState')({ fetching: false }))
-      }
+      },
+      *get({payload='get'}, {call, put, select}){
+        yield put(createAction('updateState')({ fetching: true }))
+        const globalState=yield select((state)=>state)
+        const res = yield call(readService.fetchParkStatus, payload)
+        if(res){
+          yield put(createAction('updateState')({ data: res }))
+        }else{
+          console.log("fail",res)
+        }
+        yield put(createAction('updateState')({ fetching: false }))
+      },
   },
   subscriptions: {
     //调用时加载

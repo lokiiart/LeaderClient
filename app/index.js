@@ -6,10 +6,11 @@ import Router, { routerMiddleware, routerReducer } from './router'
 import appModel from './models/app'
 import financeDemands from './models/financeDemands'
 import parkStatus from './models/parkStatus'
+import projects from './models/project'
 
 const app = dva({
   initialState: {},
-  models: [appModel, financeDemands, parkStatus],
+  models: [appModel, financeDemands, parkStatus, projects],
   extraReducers: { router: routerReducer },
   onAction: [routerMiddleware],
   onError(e) {

@@ -6,15 +6,22 @@ import { NavigationActions, scaleSizeW, scaleSizeH, setSpText } from '../../util
 import {ReadingStatus, SwitchTab, DownFrame, DataTableList, Button, EditableFrame} from '../../components';
 import { Theme } from '../../comm'
 import InputScrollView from 'react-native-input-scroll-view'
+import {Icon} from '@ant-design/react-native'
 
-@connect()
-class ProjectDetail extends Component {
-  static navigationOptions = {
+@connect(({financeDemands})=>({financeDemands}))
+class FinaceDetail extends Component {
+  static navigationOptions = ({navigation})=>({
     title: '项目协调需求详情',
     headerTitleStyle:{
       color: Theme.darkTextColor
-    }
-  }
+    },
+    headerLeft: (
+      <Icon name="arrow-left" style={{marginLeft: 5}} size="md" color={Theme.darkTextColor} onPress={()=>{
+        //navigation.dispatch(NavigationActions.back())
+        navigation.goBack()
+      }} />
+    )
+  })
   componentDidMount(): void {
     console.info('this.props',this.props)
   }
@@ -24,35 +31,42 @@ class ProjectDetail extends Component {
   }
 
   render() {
+    const {navigation} = this.props
+    console.log("navigation", navigation);
+    const item=navigation.getParam('sourceInfo','if-null')
+    console.log("tem Detail", item);
     return (
       <InputScrollView
         style={styles.container}
       >
         <View style={{ flex: 1, paddingHorizontal: scaleSizeW(20), paddingVertical: scaleSizeH(20) }}>
           <DataTableList
+            dataType={"detail_display"}
             daraArr={[
-              {"isChecked": true, "type": "detail_display", "hy" : "行业类型:", "hc":"工业企业"},
-              {"isChecked": true, "type": "detail_display", "hy" : "主营业务:", "hc":"食品"},
-              {"isChecked": true, "type": "detail_display", "hy" : "行业类型:", "hc":"工业企业"},
-              {"isChecked": true, "type": "detail_display", "hy" : "注册资金（万元）:", "hc":"1800"},
-              {"isChecked": true, "type": "detail_display", "hy" : "行业类型:", "hc":"工业企业"},
-              {"isChecked": true, "type": "detail_display", "hy" : "行业类型:", "hc":"工业企业"},
-              {"isChecked": true, "type": "detail_display", "hy" : "行业类型:", "hc":"工业企业"},
-              {"isChecked": true, "type": "detail_display", "hy" : "行业类型:", "hc":"工业企业"},
-              {"isChecked": true, "type": "detail_display", "hy" : "行业类型:", "hc":"工业企业"},
-              {"isChecked": true, "type": "detail_display", "hy" : "联系人:", "hc":"李贤"},
-              {"isChecked": true, "type": "detail_display", "hy" : "联系电话:", "hc":"1566262278"},
+              { "hy":     "业主单位:", "hc": item.companyName},
+              { "hy":       "联系人:", "hc": item.contact},
+              { "hy":   "联系人电话:", "hc": item.phoneNum},
+              { "hy":     "所属行业:", "hc": item.industryType},
+              { "hy":   "项目总投资:", "hc": item.totalFinance},
+              { "hy":     "建设地址:", "hc": item.buildingLocation},
+              { "hy":     "开工日期:", "hc": item.startDateTime},
+              { "hy":     "建成日期:", "hc": item.planDateTime},
+              { "hy": "工程形象进度:", "hc": item.buildingProcess},
+              { "hy":   "办理责任人:", "hc": item.responsible},
+              { "hy":     "办理部门:", "hc": item.department},
+              { "hy":     "主要建设内容", "hc": item.majorBuildingContent},
+              { "hy":     "存在问题和困难:", "hc": item.difficultyies},
             ]}
             headerArr={[
-              {name: '企业名称:', width: 1},
-              {name: '食品典典', width: 2},
+              {name: '项目名称:', width: 1},
+              {name: item.projectName, width: 2},
             ]}
             onPress={(item) => {
               this.props.navigation.navigate('FinaceDetail', {sourceInfo: item})
             }}
           />
           <EditableFrame
-            defaultValue={''}
+            defaultValue={item.adviseFromLeader}
             goback={() => {
               this.props.navigation.pop()
             }}
@@ -74,7 +88,7 @@ class ProjectDetail extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
 })
 // FinaceDetail.navigationOptions(() => {
@@ -82,4 +96,4 @@ const styles = StyleSheet.create({
 //     headerTitle: '详情',
 //   }
 // })
-export default ProjectDetail
+export default FinaceDetail

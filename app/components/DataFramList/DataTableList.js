@@ -19,8 +19,13 @@ import {
 } from 'react-native-data-table';
 import EnterpriseRow from './EnterpriseRow'
 import FinaceRow from './FinaceRow'
+import ParkStatusRow from './ParkStatusRow'
+import ProjectRow from './ProjectRow'
 import FinaceDetailRow from './FinaceDetailRow'
 import { Theme } from '../../comm'
+import ProjectDetail from '../../containers/project/ProjectDetail';
+import ParkStatusDetail from '../../containers/parkStatus/ParkStatusDetail';
+import Finace from '../../containers/Finace';
 
 
 export default class DataTableList extends Component {
@@ -79,22 +84,30 @@ export default class DataTableList extends Component {
     );
   }
   renderRow(item) {
-    console.log("the params", this.props.dataType);
-        switch (this.props.dataType) {
+    console.log("item",item);
+    switch (this.props.dataType) {
         //switch (item.type) {
-          case 'display':
-            return (
-              <EnterpriseRow item={item}/>
-            );
-          case 'finance':
-            return(
-              <FinaceRow item={item} onPress={(itemx) => this.props.onPress(itemx)}/>
-            );
-          case 'detail_display':
-            return(
-              <FinaceDetailRow item={item}/>
-            );
-        }
+      case 'display':
+        return (
+          <EnterpriseRow item={item}/>
+        );
+      case 'parkStatus':
+        return (
+          <ParkStatusRow item={item} onPress={(itemx) => this.props.onPress(itemx)}/>
+        )
+      case 'finance':
+        return(
+          <FinaceRow item={item} onPress={(itemx) => this.props.onPress(itemx)}/>
+        );
+      case 'project':
+        return(
+          <ProjectRow item={item} onPress={(itemx) => this.props.onPress(itemx)}/>
+        );
+      case 'detail_display':
+        return (
+          <FinaceDetailRow item={item} />
+        )
+    }
 
   }
 /*

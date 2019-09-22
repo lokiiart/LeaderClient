@@ -1,4 +1,4 @@
-import fetch from 'dva/fetch'
+import fetch from 'cross-fetch'
 import {BASE_URL, HOST} from './config'
 import Storage from './storage'
 import {Toast} from '@ant-design/react-native'
@@ -71,7 +71,6 @@ export function READ(options){
             headers
         })
         .then(response => {
-            console.log("response not handled", response)
             if(response.ok){
                 return  response.json()
             }else{
@@ -79,9 +78,11 @@ export function READ(options){
             }
         })
         .then(response=>{
+            console.log("response OK", response);
             resolve(response)
         })
         .catch(response =>{
+            console.log("response not handled", response)
             reject("网络错误")
         })
     }).catch(err=>{

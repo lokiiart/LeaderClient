@@ -3,4 +3,6 @@ node_modules
 ./.vscode
 android/app/build
 **/*.gradle
+Session.vim
+loki.viminfo
 

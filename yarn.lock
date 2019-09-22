@@ -2448,8 +2448,8 @@ create-react-context@0.2.2:
 
 cross-fetch@^3.0.4:
   version "3.0.4"
-  resolved "https://registry.npm.taobao.org/cross-fetch/download/cross-fetch-3.0.4.tgz#7bef7020207e684a7638ef5f2f698e24d9eb283c"
-  integrity sha1-e+9wICB+aEp2OO9fL2mOJNnrKDw=
+  resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-3.0.4.tgz#7bef7020207e684a7638ef5f2f698e24d9eb283c"
+  integrity sha512-MSHgpjQqgbT/94D4CyADeNoYh52zMkCX4pcJvPP5WqPsLFMKjr2TCMg381ox5qI0ii2dPwaLx/00477knXqXVw==
   dependencies:
     node-fetch "2.6.0"
     whatwg-fetch "3.0.0"
@@ -3555,11 +3555,6 @@ gud@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/gud/-/gud-1.0.0.tgz#a489581b17e6a70beca9abe3ae57de7a499852c0"
   integrity sha512-zGEOVKFM5sVPPrYs7J5/hYEw2Pof8KCyOwyhG8sAF26mCAeUFAcYPu1mwB7hhpIP29zOIBaDqwuHdLp0jvZXjw==
-
-hammerjs@^2.0.8:
-  version "2.0.8"
-  resolved "https://registry.yarnpkg.com/hammerjs/-/hammerjs-2.0.8.tgz#04ef77862cff2bb79d30f7692095930222bf60f1"
-  integrity sha1-BO93hiz/K7edMPdpIJWTAiK/YPE=
 
 handlebars@^4.1.2:
   version "4.2.0"
@@ -6188,23 +6183,22 @@ react-native-drawer-layout@1.3.2, react-native-drawer-layout@~1.3.0:
   dependencies:
     react-native-dismiss-keyboard "1.0.0"
 
-react-native-echarts-wrapper@^1.4.5:
-  version "1.4.5"
-  resolved "https://registry.yarnpkg.com/react-native-echarts-wrapper/-/react-native-echarts-wrapper-1.4.5.tgz#523dcdcade13897f26994a3cd861147f772a1476"
-  integrity sha512-CisNxLrjqmf02mTbrEsmykBquFyR3Sb6BSnZpwX16LhUT7zmiKcQanQLnYnlkIpbVe/Xt2Nfn0XAMFyUJytT0Q==
+react-native-echarts-wrapper@^1.4.7:
+  version "1.4.7"
+  resolved "https://registry.yarnpkg.com/react-native-echarts-wrapper/-/react-native-echarts-wrapper-1.4.7.tgz#20ef117019daf64def86c35e962c6115f0c033c0"
+  integrity sha512-tAavS7i2jjaG4TrcnDAg7QAFf/AwISWSeuPmDb2W7bW6LVnUbx0ahPvb4OQjhmLaXAfaemt4OiaQRUuwzcS8hA==
   dependencies:
     prop-types "^15.7.2"
     react-native-webview "^5.7.0"
 
-react-native-gesture-handler@^1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.4.1.tgz#c38d9e57637b95e221722a79f2bafac62e3aeb21"
-  integrity sha512-Ffcs+SbEbkGaal0CClYL+v7A9y4OA5G5lW01qrzjxaqASp5C8BfnWSKuqYKE00s6bLwE5L4xnlHkG0yIxAtbrQ==
+react-native-gesture-handler@~1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.1.3.tgz#8b4ced8a081bf17a9f64f4c3626caf6e12016c0a"
+  integrity sha512-0Fm+yYMgIuYZc16xxks8M4Kw8Qp/frHETMQPHSBPJMgPB9P7oFey6ZaniP8tc2Wla0VNk86nDAjXr7ytuDSo/g==
   dependencies:
-    hammerjs "^2.0.8"
     hoist-non-react-statics "^2.3.1"
-    invariant "^2.2.4"
-    prop-types "^15.7.2"
+    invariant "^2.2.2"
+    prop-types "^15.5.10"
 
 react-native-input-scroll-view@^1.9.3:
   version "1.9.3"

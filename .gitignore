@@ -2,7 +2,7 @@ node_modules
 ./.idea
 ./.vscode
 android/app/build
-**/*.gradle
+**/.gradle
 Session.vim
 loki.viminfo
 
